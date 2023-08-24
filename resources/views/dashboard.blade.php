@@ -12,6 +12,8 @@
 			<link href="{{asset('frontend/dist/css/swipe.min.css')}}" type="text/css" rel="stylesheet">
 			<!-- Favicon -->
 			<link href="{{asset('frontend/dist/img/favicon.png')}}" type="image/png" rel="icon">
+	<!-- toaster css link		 -->
+			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 	</head>
 	<body>
 		<main>
@@ -45,10 +47,43 @@
 		<script src="{{asset('frontend/dist/js/vendor/popper.min.js')}}"></script>
 		<script src="{{asset('frontend/dist/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('frontend/dist/js/bootstrap.min.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+		<script src="{{asset('frontend/dist/js/jquery.min.js')}}"></script>
+
+        <script src="{{ asset('frontend/dist/js/code.js') }}"></script>
+        
+
 		<script>
 			function scrollToBottom(el) { el.scrollTop = el.scrollHeight; }
 			scrollToBottom(document.getElementById('content'));
 		</script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+ @if(Session::has('message'))
+ var type = "{{ Session::get('alert-type','info') }}"
+ switch(type){
+    case 'info':
+    toastr.info(" {{ Session::get('message') }} ");
+    break;
+
+    case 'success':
+    toastr.success(" {{ Session::get('message') }} ");
+    break;
+
+    case 'warning':
+    toastr.warning(" {{ Session::get('message') }} ");
+    break;
+
+    case 'error':
+    toastr.error(" {{ Session::get('message') }} ");
+    break; 
+ }
+ @endif 
+</script>
+============
+
+   
 	</body>
 
 </html>

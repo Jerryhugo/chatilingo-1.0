@@ -386,22 +386,22 @@
 								<div class="tab-pane fade" id="settings">			
 									<div class="settings">
 										<div class="profile">
-											<img class="avatar-xl" src="dist/img/avatars/avatar-male-1.jpg" alt="avatar">
-											<h1><a href="#">Michael Knudsen</a></h1>
-											<span>Helena, Montana</span>
+											<img class="avatar-xl" src="{{asset('frontend/dist/img/avatars/avatar-male-1.jpg')}}" alt="avatar">
+											<h1><a href="#">{{$name}}</a></h1>
+											<!-- <span>Helena, Montana</span> -->
 											<div class="stats">
 												<div class="item">
 													<h2>122</h2>
 													<h3>Fellas</h3>
 												</div>
-												<div class="item">
+												<!-- <div class="item">
 													<h2>305</h2>
 													<h3>Chats</h3>
 												</div>
 												<div class="item">
 													<h2>1538</h2>
 													<h3>Posts</h3>
-												</div>
+												</div> -->
 											</div>
 										</div>
 										<div class="categories" id="accordionSettings">
@@ -418,42 +418,51 @@
 												</a>
 												<div class="collapse" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionSettings">
 													<div class="content">
+													<input id="profileImage" type="file">
 														<div class="upload">
 															<div class="data">
-																<img class="avatar-xl" src="dist/img/avatars/avatar-male-1.jpg" alt="image">
-																<label>
-																	<input type="file">
-																	<span class="btn button">Upload avatar</span>
-																</label>
+																<img id="showImage" class="avatar-xl" src="{{asset('frontend/dist/img/avatars/avatar-male-1.jpg')}}" alt="image">
+																
+																	<!-- <input id="profileImage" type="file">
+																	<span class="btn button">Upload avatar</span> -->
+																
 															</div>
 															<p>For best results, use an image at least 256px by 256px in either .jpg or .png format!</p>
 														</div>
-														<form>
+														<form method="post" action="{{route('update.account')}}">
+															@csrf
 															<div class="parent">
 																<div class="field">
-																	<label for="firstName">First name <span>*</span></label>
-																	<input type="text" class="form-control" id="firstName" placeholder="First name" value="Michael" required>
+																	<label for="firstName">Name <span>*</span></label>
+																	<input type="text" name='name' class="form-control" id="firstName" placeholder="{{$name}}" value="{{$name}}" >
 																</div>
-																<div class="field">
-																	<label for="lastName">Last name <span>*</span></label>
-																	<input type="text" class="form-control" id="lastName" placeholder="Last name" value="Knudsen" required>
-																</div>
+															
 															</div>
 															<div class="field">
 																<label for="email">Email <span>*</span></label>
-																<input type="email" class="form-control" id="email" placeholder="Enter your email address" value="michael@gmail.com" required>
+																<input type="email" name="email" class="form-control" id="email" placeholder="{{$email}}" value="{{$email}}" >
 															</div>
 															<div class="field">
 																<label for="password">Password</label>
-																<input type="password" class="form-control" id="password" placeholder="Enter a new password" value="password" required>
+																<input type="password" name="new_password" class="form-control"  placeholder="New password" value="">
 															</div>
 															<div class="field">
-																<label for="location">Location</label>
-																<input type="text" class="form-control" id="location" placeholder="Enter your location" value="Helena, Montana" required>
+																<label for="password">Password</label>
+																<input type="password" name="comfirm_password" class="form-control"  placeholder="Confirm password" value="">
 															</div>
-															<button class="btn btn-link w-100">Delete Account</button>
+															@if ($errors->any())
+															
+																	@foreach ($errors->all() as $error)
+																	<span class="tex-danger">
+																		{{ $error }}
+																	</span>
+																	@endforeach
+															@endif
+														
+															<a id="delete" href="{{route('delete.account')}}" class="btn btn-link w-100">Delete Account</a>
 															<button type="submit" class="btn button w-100">Apply</button>
 														</form>
+														
 													</div>
 												</div>
 											</div>
@@ -488,7 +497,7 @@
 											</div>
 											<!-- End of Chat History -->
 											<!-- Start of Notifications Settings -->
-											<div class="category">
+											<!-- <div class="category">
 												<a href="#" class="title collapsed" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
 													<i class="material-icons md-30 online">notifications_none</i>
 													<div class="data">
@@ -561,10 +570,10 @@
 														</div>
 													</div>
 												</div>
-											</div>
+											</div> -->
 											<!-- End of Notifications Settings -->
 											<!-- Start of Connections -->
-											<div class="category">
+											<!-- <div class="category">
 												<a href="#" class="title collapsed" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
 													<i class="material-icons md-30 online">sync</i>
 													<div class="data">
@@ -621,10 +630,10 @@
 														</div>
 													</div>
 												</div>
-											</div>
+											</div> -->
 											<!-- End of Connections -->
 											<!-- Start of Appearance Settings -->
-											<div class="category">
+											<!-- <div class="category">
 												<a href="#" class="title collapsed" id="headingFive" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
 													<i class="material-icons md-30 online">colorize</i>
 													<div class="data">
@@ -647,10 +656,10 @@
 														</div>
 													</div>
 												</div>
-											</div>
+											</div> -->
 											<!-- End of Appearance Settings -->
 											<!-- Start of Language -->
-											<div class="category">
+											<!-- <div class="category">
 												<a href="#" class="title collapsed" id="headingSix" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
 													<i class="material-icons md-30 online">language</i>
 													<div class="data">
@@ -671,10 +680,10 @@
 														</div>
 													</div>
 												</div>
-											</div>
+											</div> -->
 											<!-- End of Language -->
 											<!-- Start of Privacy & Safety -->
-											<div class="category">
+											<!-- <div class="category">
 												<a href="#" class="title collapsed" id="headingSeven" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
 													<i class="material-icons md-30 online">lock_outline</i>
 													<div class="data">
@@ -747,10 +756,10 @@
 														</div>
 													</div>
 												</div>
-											</div>
+											</div> -->
 											<!-- End of Privacy & Safety -->
 											<!-- Start of Logout -->
-											<div class="category">
+											<!-- <div class="category">
 												<a href="sign-in.html" class="title collapsed">
 													<i class="material-icons md-30 online">power_settings_new</i>
 													<div class="data">
@@ -759,7 +768,7 @@
 													</div>
 													<i class="material-icons">keyboard_arrow_right</i>
 												</a>
-											</div>
+											</div> -->
 											<!-- End of Logout -->
 										</div>
 									</div>
@@ -769,3 +778,16 @@
 						</div>
 					</div>
 				</div>
+
+
+				<script>
+        $(document).ready(function(){
+            $('#profileImage').change(function(e){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#showImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0'])
+            });
+        });
+</script>
