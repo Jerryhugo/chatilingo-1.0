@@ -13,7 +13,8 @@ class DashboardController extends Controller
         $id = Auth::user()->id;
         $name = Auth::user()->name;
         $email = Auth::user()->email;
-        return view('dashboard', compact('id', "name", "email"));
+        $allUsers = User::all();
+        return view('dashboard', compact('id', "name", "email", 'allUsers'));
     }// end method
 
     public function DeleteAccount() {

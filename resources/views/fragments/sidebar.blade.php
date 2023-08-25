@@ -9,7 +9,7 @@
 											<input type="search" class="form-control" id="people" placeholder="Search for people...">
 											<button type="button" class="btn btn-link loop"><i class="material-icons">search</i></button>
 										</form>
-										<button class="btn create" data-toggle="modal" data-target="#exampleModalCenter"><i class="material-icons">person_add</i></button>
+										<a href="{{route('display.friends')}}" id="displayFriendsButton" class="btn create" data-toggle="modal" data-target="#exampleModalCenter"><i class="material-icons">person_add</i></a>
 									</div>
 									<div class="list-group sort">
 										<button class="btn filterMembersBtn active show" data-toggle="list" data-filter="all">All</button>

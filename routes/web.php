@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AddFriendsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +29,15 @@ Route::controller(DashboardController::class)->group(function() {
     Route::get('/delete/account', 'DeleteAccount')->name('delete.account');
     Route::post('/update/account', 'UpdateAccount')->name('update.account');
 });
+
+
 });
+Route::controller(AddFriendsController::class)->group(function() {
+    Route::get('/display-friends', 'DisplayAllUsers')->name('display.friends');
+});
+
+
+
 
 // Admin all route
 // Route::controller(AdminController::class)->group(function() {

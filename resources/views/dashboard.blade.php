@@ -81,7 +81,28 @@
  }
  @endif 
 </script>
-============
+
+
+//js ajax script for fetching all user list from database
+
+// <script>
+//     $(document).ready(function() {
+//         $('#displayFriendsButton').click(function() {
+//             $.ajax({
+//                 type: 'GET',
+//                 url: '{{ route('display.friends') }}',
+//                 success: function(response) {
+//                     // Update the friendsList div with the response
+//                     $('#friendsList').html(response);
+//                 },
+//                 error: function(xhr, status, error) {
+//                     // Handle error response (e.g., show an error message)
+//                     alert('Error displaying friends.');
+//                 }
+//             });
+//         });
+//     });
+// </script>
 
    
 	</body>
