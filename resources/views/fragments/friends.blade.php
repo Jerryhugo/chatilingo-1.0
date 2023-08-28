@@ -6,32 +6,47 @@
 								<button type="button" class="btn" data-dismiss="modal" aria-label="Close"><i class="material-icons">close</i></button>
 							</div>
 							<div class="content">
-								<form> 
-									
+								<!-- <form action="" method="post">
+								@csrf
+									<button type="submit">go</button>
+								</form> -->
 										
 
 									
-								@if ($allUsers)
+								
 								@foreach($allUsers as $user)
-								<div class="list-group list-style my-4"  role="tablist">
-											<div style = 'display:flex; justify-content: space-between; ' class="filterMembers all online contact" data-toggle="list">
-											<div class="" style = 'display:flex;'>
+								@if ($user->id != $id )
+								<div class="wrap" style="display: flex; justify-content: space-between;">
+								<div class="" style = 'display:flex;'>
 												<img class="avatar-md" src="{{asset('frontend/dist/img/avatars/avatar-female-1.jpg')}}" data-toggle="tooltip" data-placement="top" title="Janette" alt="avatar">
 											
 												<div class="data mx-4">
 													<h5>{{$user->name}}</h5>
 													
 												</div>
-											</div>
-												<a href="#" class="person-add">
-													<i class="material-icons">person_add</i>
-												</a>
-											</div>
-								
-							
 								</div>
-								@endforeach
+								<form method='post' action="{{route('add.friend')}}" > 
+								            	@csrf
+											<input type="hidden" value="{{$user->id}}" name="recipient_id">
+											<input type="hidden" value="{{$user->name}}" name="recipient_name">
+												<button  type="submit" class="person-add">
+													add
+												</button>
+											
+											</form> 
+								</div>
+							  
+							
+								<!-- <div class="list-group list-style my-4"  role="tablist">
+											<div style = 'display:flex; justify-content: space-between; ' class="filterMembers all online contact" data-toggle="list">
+										
+										
+											</div>
+								</div> -->
+								
 								@endif
+								@endforeach
+								
 								
 									
 							
@@ -49,7 +64,7 @@
 										<textarea class="text-control" id="welcome" placeholder="Send your welcome message...">Hi Keith, I'd like to add you as a contact.</textarea>
 									</div>
 									<button type="submit" class="btn button w-100">Send Friend Request</button> -->
-								</form>
+								
 							</div>
 						</div>
 					</div>

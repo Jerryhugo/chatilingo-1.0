@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\AddFriendsController;
+use App\Http\Controllers\Features\AddFriendsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +34,7 @@ Route::controller(DashboardController::class)->group(function() {
 });
 Route::controller(AddFriendsController::class)->group(function() {
     Route::get('/display-friends', 'DisplayAllUsers')->name('display.friends');
+    Route::post('/add/friends/', 'AddFriend')->name('add.friend');
 });
 
 

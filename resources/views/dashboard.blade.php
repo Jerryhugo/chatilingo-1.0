@@ -17,6 +17,7 @@
 	</head>
 	<body>
 		<main>
+			
 			<div class="layout">
 				<!-- Start of Navigation -->
                     @include('fragments.navigation')
@@ -32,27 +33,29 @@
 				<!-- End of Create Chat -->
                     @include('fragments.main.main')
 			</div> <!-- Layout -->
+			
 		</main>
 		<!-- Bootstrap/Swipe core JavaScript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="dist/js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="{{asset('frontend/dist/js/jquery-3.3.1.slim.min.js')}}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script>window.jQuery || document.write('<script src="dist/js/vendor/jquery-slim.min.js"><\/script>')</script>
-		<script src="dist/js/vendor/popper.min.js"></script>
-		<script src="dist/js/swipe.min.js"></script>
+		<script src="{{asset('frontend/dist/js/vendor/popper.min.js')}}"></script>
+		<script src="{{asset('frontend/dist/js/swipe.min.js')}}"></script>
 		
 
         <script src="{{asset('frontend/dist/js/jquery-3.3.1.slim.min.js')}}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script>window.jQuery || document.write('<script src="{{{asset('frontend/dist/js/vendor/jquery-slim.min.js"><\/script>')}}}')</script>
 		<script src="{{asset('frontend/dist/js/vendor/popper.min.js')}}"></script>
 		<script src="{{asset('frontend/dist/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('frontend/dist/js/bootstrap.min.js')}}"></script>
+       
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 		<script src="{{asset('frontend/dist/js/jquery.min.js')}}"></script>
 
         <script src="{{ asset('frontend/dist/js/code.js') }}"></script>
         
 
+		
 		<script>
 			function scrollToBottom(el) { el.scrollTop = el.scrollHeight; }
 			scrollToBottom(document.getElementById('content'));
@@ -83,26 +86,9 @@
 </script>
 
 
-//js ajax script for fetching all user list from database
 
-// <script>
-//     $(document).ready(function() {
-//         $('#displayFriendsButton').click(function() {
-//             $.ajax({
-//                 type: 'GET',
-//                 url: '{{ route('display.friends') }}',
-//                 success: function(response) {
-//                     // Update the friendsList div with the response
-//                     $('#friendsList').html(response);
-//                 },
-//                 error: function(xhr, status, error) {
-//                     // Handle error response (e.g., show an error message)
-//                     alert('Error displaying friends.');
-//                 }
-//             });
-//         });
-//     });
-// </script>
+
+
 
    
 	</body>
