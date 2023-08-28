@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Features\AddFriendsController;
+use App\Http\Controllers\Features\NotificationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,14 +29,21 @@ Route::controller(DashboardController::class)->group(function() {
     Route::get('/dashboard', 'PassData')->name('dashboard');
     Route::get('/delete/account', 'DeleteAccount')->name('delete.account');
     Route::post('/update/account', 'UpdateAccount')->name('update.account');
-});
+});//end DashboardController
 
-
-});
 Route::controller(AddFriendsController::class)->group(function() {
     Route::get('/display-friends', 'DisplayAllUsers')->name('display.friends');
     Route::post('/add/friends/', 'AddFriend')->name('add.friend');
+});// end AddFriendsController
+
+Route::controller(NotificationController::class)->group(function() {
+    Route::get('/Create/Notifcation', 'CreateNotification')->name('create.notification');
+});// end NotificationController
+
+
+
 });
+
 
 
 

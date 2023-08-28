@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Features\NotificationController;
 //models
 use App\Models\User;
 use App\Models\Friend;
@@ -23,18 +24,34 @@ class AddFriendsController extends Controller
 
     public function AddFriend(Request $request){
        
-        $user = Auth::user()->id;
+        $sender_id = Auth::user()->id;
+        $sender_name = Auth::user()->name;
         $recipient_name = $request->recipient_name;
         $recipient_id = $request->recipient_id;
 
+
        DB::table('requests')->insert([
-            'user_id' => $user,
+            'user_id' => $sender_id,
             'friend_id' => $recipient_id,
             'friend_name' => $recipient_name,
             'created_at' => Carbon::now()
         ]);
 
-        return redirect()->back()->with(['message' => 'Request successfully sent', 'alert-type' => 'success']);
+        //insert notification into notification table
+        
+        $notification = $sender_name . " just Sent you are friend request";
+        DB::table('notifications')->insert([
+            'sender_id' => $sender_id,
+            'sender_name' => $sender_name,
+            'recipient_id' => $recipient_id,
+            'recipient_name' => $recipient_name,
+            'notification' => $notification,
+            'created_at' => Carbon::now()
+        ]);
+
+
+
+         return redirect()->back()->with(['message' => 'Request successfully sent', 'alert-type' => 'success']);
         
     }
 }

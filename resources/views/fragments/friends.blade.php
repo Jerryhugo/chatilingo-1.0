@@ -12,8 +12,9 @@
 								</form> -->
 										
 
-									
-								
+								<!-- the databelow was passed from the DisplayAllUsers method in addfriendcontroller class	 -->
+								<!-- ------------------------------------------------------------------------------------------------
+								------------------------------------------------------------------------------------------------ -->
 								@foreach($allUsers as $user)
 								@if ($user->id != $id )
 								<div class="wrap" style="display: flex; justify-content: space-between;">
@@ -27,6 +28,7 @@
 								</div>
 								<form method='post' action="{{route('add.friend')}}" > 
 								            	@csrf
+												
 											<input type="hidden" value="{{$user->id}}" name="recipient_id">
 											<input type="hidden" value="{{$user->name}}" name="recipient_name">
 												<button  type="submit" class="person-add">
@@ -35,7 +37,8 @@
 											
 											</form> 
 								</div>
-							  
+							  <!-- --------------------------------------------------------------------------------------------------------
+							  -------------------------------------------------------------------------------------------------------- -->
 							
 								<!-- <div class="list-group list-style my-4"  role="tablist">
 											<div style = 'display:flex; justify-content: space-between; ' class="filterMembers all online contact" data-toggle="list">

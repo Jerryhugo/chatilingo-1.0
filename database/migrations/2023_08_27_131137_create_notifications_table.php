@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('recipient_id')->nullable();
             $table->string('recipient_name')->nullable();
             $table->string('notification')->nullable(); 
-            $table->string('created_at')->nullable(); 
+           
             $table->timestamps();
         });
     }
